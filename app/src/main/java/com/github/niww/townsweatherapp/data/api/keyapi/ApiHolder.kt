@@ -15,7 +15,7 @@ object ApiHolder {
 
     val api :IDataLoader by lazy {
         val retrofit =Retrofit.Builder()
-            .baseUrl("http://api.openweathermap.org")
+            .baseUrl("https://api.openweathermap.org")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
 
