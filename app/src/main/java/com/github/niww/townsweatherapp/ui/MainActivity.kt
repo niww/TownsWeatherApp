@@ -2,6 +2,7 @@ package com.github.niww.townsweatherapp.ui
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
 
         var data: WeatherOfCity? = null
         val rv = findViewById<RecyclerView>(R.id.rv)
+        val viewIcon = findViewById<ImageView>(R.id.iv_of_day)
         val linearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         var adapterRV = Adapter(data)
 
@@ -29,23 +31,20 @@ class MainActivity : AppCompatActivity() {
             adapter = adapterRV
         }
 
-        mainViewModel.liveDataDay().observe(this, {
+        mainViewModel.liveDataDay().observeForever {
             data = it
             rv.adapter = Adapter(data)
             adapterRV.notifyDataSetChanged()
 
-        })
-        mainViewModel.liveDataDaily().observe(this, {
-            var daily = data?.copy( dailyList = it)
-
+        }
+        mainViewModel.liveDataDaily().observeForever {
+            var daily = data?.copy(dailyList = it)
 
             rv.adapter = Adapter(daily)
             adapterRV.notifyDataSetChanged()
             Log.d("loadWeather getLiveData", "${it}")
 
-        })
-
-
+        }
 
 
     }
