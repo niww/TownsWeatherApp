@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.niww.townsweatherapp.R
 import com.github.niww.townsweatherapp.model.WeatherOfCity
+import com.github.niww.townsweatherapp.ui.adapter.Adapter
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
         var data: WeatherOfCity? = null
         val rv = findViewById<RecyclerView>(R.id.rv)
-        val viewIcon = findViewById<ImageView>(R.id.iv_of_day)
+        val viewIcon = findViewById<ImageView>(R.id.icon_of_day)
         val linearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         var adapterRV = Adapter(data)
 

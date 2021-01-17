@@ -1,4 +1,4 @@
-package com.github.niww.townsweatherapp.ui
+package com.github.niww.townsweatherapp.ui.image
 
 import android.widget.ImageView
 import com.bumptech.glide.Glide
