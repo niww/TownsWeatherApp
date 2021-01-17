@@ -19,7 +19,7 @@ class Adapter(weatherOfCity:WeatherOfCity?) : RecyclerView.Adapter<Adapter.ViewH
         )
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.onBind(listOfWeather[position]?.name, listOfWeather[position]?.main?.temperature.toString())
+        holder.onBind(listOfWeather[position]?.name, listOfWeather[position], position)
     }
 
     override fun getItemCount() = listOfWeather.size
@@ -28,10 +28,14 @@ class Adapter(weatherOfCity:WeatherOfCity?) : RecyclerView.Adapter<Adapter.ViewH
 
         val cityName = itemView.findViewById<TextView>(R.id.city_name)
         val weather = itemView.findViewById<TextView>(R.id.weather_of_city)
+        val tempMax = itemView.findViewById<TextView>(R.id.temp_max)
+        val tempMin = itemView.findViewById<TextView>(R.id.temp_min)
 
-        fun onBind(city: String?, weatherOfCity: String?) {
+        fun onBind(city: String?, weatherOfCity: WeatherOfCity?, position: Int) {
             cityName.text = city
-            weather.text = weatherOfCity.toString()
+            weather.text = weatherOfCity?.main?.temp.toString()
+            tempMax.text = weatherOfCity?.dailyList?.daily?.get(0)?.temp?.max.toString()
+            tempMin.text = weatherOfCity?.dailyList?.daily?.get(0)?.temp?.min.toString()
         }
     }
 }

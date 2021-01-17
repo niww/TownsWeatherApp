@@ -4,5 +4,6 @@ data class WeatherOfCity(
     val id: String,
     val name: String,
     val clouds: Clouds,
-    val main: Main
+    val main: Main,
+    val dailyList: DailyList
 )

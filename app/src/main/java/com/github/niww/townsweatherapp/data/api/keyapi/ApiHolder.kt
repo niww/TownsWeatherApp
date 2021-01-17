@@ -17,6 +17,7 @@ object ApiHolder {
         val retrofit =Retrofit.Builder()
             .baseUrl("https://api.openweathermap.org")
             .addConverterFactory(GsonConverterFactory.create(gson))
+
             .build()
 
         retrofit.create(IDataLoader::class.java)

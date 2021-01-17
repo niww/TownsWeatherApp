@@ -4,5 +4,8 @@ data class Daily(
     val dt:String,
     val sunrise:String,
     val sunset:String,
-    val pressure:String
-)
+    val pressure:String,
+    val temp: DailyTemp
+){
+
+}
